@@ -1,0 +1,45 @@
+package graphiques;
+
+import java.util.*;
+import org.newdawn.slick.*;
+
+import generaux.Rond;
+import interfaces.*;
+import lanceur.App;
+
+public class Nuage extends Graphique
+{
+	private ArrayList<Rond> ronds;
+	private Color color;
+	
+	public Nuage()
+	{
+		super((int)(Math.random()*App.width),(int)(Math.random()*App.height));
+		ronds = new ArrayList<Rond>();
+		
+		double delai = ((Math.random()*20)*2)+10;
+		int tmp = 220+(int)((1-(delai/50))*35);
+				
+		this.setDelai((int)(delai));
+		this.color = new Color(tmp,tmp,tmp);
+		
+		int nbX = (int)(Math.random()*200)+100;
+		int nbY = (int)(Math.random()*25)+50;
+		
+		for(int i=0;i<20;i++){ronds.add(new Rond((int)(Math.random()*nbX+getX()),(int)(Math.random()*nbY+getX())));}
+	}
+	
+	public void render(GameContainer container, Graphics g) throws SlickException 
+	{
+		g.drawString("x:"+getX()+"   y"+getY(), getX(), getY()-20);
+		g.setColor(Color.red);
+		g.drawLine(getX(), getY(), getX()+100, getY());
+		g.setColor(this.color);
+		for(Rond rond : ronds) {rond.render(getX(),getY(),container,g);}
+	}
+
+	public void update(GameContainer container, int delta) throws SlickException 
+	{
+		
+	}
+}

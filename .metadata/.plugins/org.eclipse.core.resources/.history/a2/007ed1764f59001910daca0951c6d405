@@ -1,0 +1,8 @@
+package interfaces;
+
+import org.newdawn.slick.*;
+
+public interface Graphique 
+{
+	 public void render(GameContainer container, Graphics g) throws SlickException;
+}

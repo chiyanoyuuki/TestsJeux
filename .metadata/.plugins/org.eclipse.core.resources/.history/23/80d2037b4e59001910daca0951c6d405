@@ -1,0 +1,8 @@
+package interfaces;
+
+public class Snippet {
+	public static void main(String[] args) {
+		this.fond.render(container,g);
+	}
+}
+

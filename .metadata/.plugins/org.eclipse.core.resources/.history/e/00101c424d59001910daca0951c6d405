@@ -1,0 +1,17 @@
+package Lanceur;
+
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.SlickException;
+
+public class App {
+	
+	public App() throws SlickException
+	{
+		AppGameContainer app = new AppGameContainer(new Game(), 1600, 900, false);
+    	app.setShowFPS(false);
+    	Game.g = app.getGraphics();
+    	app.start();
+	}
+	
+	 public static void main(String[] args) throws SlickException {App app = new App();}
+}
