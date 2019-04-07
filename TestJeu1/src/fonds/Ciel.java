@@ -13,7 +13,7 @@ public class Ciel implements Objet
 	public Ciel() throws SlickException
 	{
 		this.graphiques = new ArrayList<Graphique>();
-		for(int i=0;i<10;i++) {this.graphiques.add(new Nuage());}
+		for(int i=0;i<10;i++) {this.graphiques.add(new Nuage(i));}
 	}
 	
 	public void render(GameContainer container, Graphics g) throws SlickException 
@@ -32,7 +32,7 @@ public class Ciel implements Objet
 			if(g.getX()<=g.getImage().getWidth()*-1)
 			{
 				graphiques.remove(i--);
-				graphiques.add(new Nuage(0));
+				graphiques.add(new Nuage(0,i));
 			}
 				
 		}

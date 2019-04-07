@@ -4,6 +4,7 @@ import java.util.*;
 import org.newdawn.slick.*;
 import fonds.*;
 import interfaces.Objet;
+import sols.Sols;
 
 public class Game extends BasicGame 
 {
@@ -16,6 +17,7 @@ public class Game extends BasicGame
     {
     	this.objets = new HashMap<String,Objet>();
     	this.objets.put("fonds",new Fonds());
+    	this.objets.put("sols",new Sols());
     }
 
     @Override

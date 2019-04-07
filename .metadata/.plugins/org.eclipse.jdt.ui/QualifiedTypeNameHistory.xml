@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.newdawn.slick.GameContainer"/>
+<fullyQualifiedTypeName name="Fonds.Fonds"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="Lanceur.Objet"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Color"/>
+<fullyQualifiedTypeName name="interfaces.Objet"/>
+<fullyQualifiedTypeName name="interfaces.Graphique"/>
+<fullyQualifiedTypeName name="lanceur.App"/>
+<fullyQualifiedTypeName name="graphiques.Nuage"/>
+<fullyQualifiedTypeName name="interfaces.Forme"/>
+<fullyQualifiedTypeName name="generaux.Rond"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Image"/>
+<fullyQualifiedTypeName name="sols.Sols"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+</qualifiedTypeNameHistroy>
