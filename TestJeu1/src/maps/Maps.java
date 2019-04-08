@@ -14,14 +14,21 @@ public class Maps implements Objet
 	public Maps() throws SlickException, FileNotFoundException, SQLException
 	{
 		map = new HashMap<Integer,HashMap<Integer,Case>>();
-		int nbMap = 0;
-		ResultSet rs = App.SQL.executeQuery("SELECT *, (CASE WHEN EXISTS(SELECT * FROM CASES C2 WHERE C2.MAP="+nbMap+" AND C2.X=C1.X AND C2.Y=C1.Y-1) THEN 1 ELSE 0 END) AS TOP FROM CASES C1 WHERE C1.MAP="+nbMap+" ORDER BY X, Y");
+		ResultSet rs = App.SQL.executeQuery("SELECT *, \r\n" + 
+				"\r\n" + 
+				"(CASE WHEN EXISTS(SELECT * FROM CASES C2 WHERE C2.MAP=0 AND C2.X=C1.X 		AND C2.Y=C1.Y-1	) 	THEN 0 ELSE 1 END) AS bord1,\r\n" + 
+				"(CASE WHEN EXISTS(SELECT * FROM CASES C2 WHERE C2.MAP=0 AND C2.X=C1.X+1 	AND C2.Y=C1.Y	) 	THEN 0 ELSE 2 END) AS bord2,\r\n" + 
+				"(CASE WHEN EXISTS(SELECT * FROM CASES C2 WHERE C2.MAP=0 AND C2.X=C1.X 		AND C2.Y=C1.Y+1	) 	THEN 0 ELSE 4 END) AS bord4,\r\n" + 
+				"(CASE WHEN EXISTS(SELECT * FROM CASES C2 WHERE C2.MAP=0 AND C2.X=C1.X-1 	AND C2.Y=C1.Y	) 	THEN 0 ELSE 8 END) AS bord8 \r\n" + 
+				"\r\n" + 
+				"FROM CASES C1 WHERE C1.MAP=0 ORDER BY X, Y");
+		
 		while(rs.next())
 		{
 			HashMap<Integer,Case> tmp;
 			if(map.containsKey(rs.getInt(3))) tmp = map.get(rs.getInt(3));
 			else tmp = new HashMap<Integer,Case>();
-			tmp.put(rs.getInt(2),new Case(rs.getInt(4),rs.getInt(5)));
+			tmp.put(rs.getInt(2),new Case(rs.getInt(4),rs.getInt(5),(rs.getInt(5)+rs.getInt(6)+rs.getInt(7)+rs.getInt(8))));
 			map.put(rs.getInt(3),tmp);
 		}
 	}
@@ -38,7 +45,7 @@ public class Maps implements Objet
 			{
 				int x = it2.next();
 				Case temp = tmp.get(x);
-				temp.getImage().draw(50*x,50*y);
+				temp.render(50*x,50*y,container, g);
 			}
 		}
 	}
