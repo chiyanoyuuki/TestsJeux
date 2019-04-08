@@ -18,7 +18,7 @@ public class Nuage extends Graphique
 	{		
 		super((int)(Math.random()*App.width),(int)(Math.random()*App.height));
 		this.nb = i;
-		scale = (float) (0.5+nb*0.05);
+		scale = (float) (0.5+nb%10*0.05);
 		ronds = new ArrayList<Rond>();
 		
 		double delai = ((Math.random()*20)*2)+10;
@@ -34,7 +34,7 @@ public class Nuage extends Graphique
 	{		
 		super(App.width,(int)(Math.random()*App.height));
 		this.nb = i;
-		scale = (float) (0.5+nb*0.05);
+		scale = (float) (0.5+nb%10*0.05);
 		ronds = new ArrayList<Rond>();
 		
 		double delai = ((Math.random()*20)*2)+10;

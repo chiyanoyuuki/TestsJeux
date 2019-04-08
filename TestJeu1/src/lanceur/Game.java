@@ -1,23 +1,29 @@
 package lanceur;
 
+import java.io.FileNotFoundException;
+import java.sql.*;
 import java.util.*;
 import org.newdawn.slick.*;
 import fonds.*;
 import interfaces.Objet;
-import sols.Sols;
+import maps.Maps;
+import personnages.Personnages;
 
 public class Game extends BasicGame 
-{
-	private HashMap<String,Objet> objets;
+{	
+	private ArrayList<Objet> objets;
 	
     public Game() {super("Jeu 1");}
 
     @Override
     public void init(GameContainer container) throws SlickException 
-    {
-    	this.objets = new HashMap<String,Objet>();
-    	this.objets.put("fonds",new Fonds());
-    	this.objets.put("sols",new Sols());
+    {	
+    	this.objets = new ArrayList<Objet>();
+    	try {
+    	this.objets.add(new Fonds());
+    	this.objets.add(new Maps());
+    	this.objets.add(new Personnages(this.objets.get(1)));
+    	} catch (FileNotFoundException | SQLException e) {e.printStackTrace();}
     }
 
     @Override
@@ -34,22 +40,10 @@ public class Game extends BasicGame
     
     private void renderObjects(GameContainer container, Graphics g) throws SlickException
     {
-    	Iterator<String> it = this.objets.keySet().iterator();
-    	while(it.hasNext())
-    	{
-    		String key = it.next();
-    		Objet o = this.objets.get(key);
-    		o.render(container, g);
-    	}
+    	for(Objet o:objets) {o.render(container, g);}
     }
     private void updateObjects(GameContainer container, int delta) throws SlickException
     {
-    	Iterator<String> it = this.objets.keySet().iterator();
-    	while(it.hasNext())
-    	{
-    		String key = it.next();
-    		Objet o = this.objets.get(key);
-    		o.update(container, delta);
-    	}
+    	for(Objet o:objets) {o.update(container, delta);}
     }
 }
